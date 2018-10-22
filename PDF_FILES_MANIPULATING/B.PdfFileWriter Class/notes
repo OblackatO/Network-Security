@@ -1,0 +1,51 @@
+"""
+Notes : 
+Valid zoom arguments for addLink function (see Table 8.2 of the PDF 1.7 reference for details):
+    /Fit 	No additional arguments
+    /XYZ 	[left] [top] [zoomFactor]
+    /FitH 	[top]
+    /FitV 	[left]
+    /FitR 	[left] [bottom] [right] [top]
+    /FitB 	No additional arguments
+    /FitBH 	[top]
+    /FitBV 	[left]
+
+1.Append pages from reader to writer (same as cloneDocumentFromReader
+no properties conserved)
+1.1 :
+for page in range(0,filer.getNumPages()):
+	page1 = filer.getPage(page)
+	filew.addPage(page1)
+filew.write(file2)
+1.2 :
+filew.appendPagesFromReader(filer)
+
+2. Insert page in a specific location: 
+filew.insertPage(page,index)
+filew.insertBlankPage(page,index)
+
+3.Set page Layout and Mode : 
+filew.setPageLayout(layout)
+
+Valid layouts are:
+    /NoLayout 	Layout explicitly not specified
+    /SinglePage 	Show one page at a time
+    /OneColumn 	Show one column at a time
+    /TwoColumnLeft 	Show pages in two columns, odd-numbered pages on the left
+    /TwoColumnRight
+     	Show pages in two columns, odd-numbered pages on the right
+    /TwoPageLeft 	Show two pages at a time, odd-numbered pages on the left
+    /TwoPageRight 	Show two pages at a time, odd-numbered pages on the right 
+filew.setPageMode(mode)
+
+Parameters:	mode (str) – The page mode to use.
+
+Valid modes are:
+    /UseNone 	Do not show outlines or thumbnails panels
+    /UseOutlines 	Show outlines (aka bookmarks) panel
+    /UseThumbs 	Show page thumbnails panel
+    /FullScreen 	Fullscreen view
+    /UseOC 	Show Optional Content Group (OCG) panel
+    /UseAttachments
+    Show attachments panel
+"""
